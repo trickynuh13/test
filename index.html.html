@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena Animation Thrissur | BSc Animation, Game Dev & Graphic Design | Free Laptop</title>
+<meta name="description" content="Join Arena Animation Thrissur. 30+ Years of Excellence. BSc Animation & VFX, BSc Game Development, BA Graphic Design. Free Laptop for New Joiners. Limited Seats.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Arena brand palette */
+  --red:       #D92025;
+  --red-dark:  #B01419;
+  --red-light: #F03035;
+  --red-glow:  rgba(217,32,37,0.1);
+  --yellow:    #F5C800;
+  --yellow-bg: rgba(245,200,0,0.10);
+  --yellow-brd:rgba(245,200,0,0.28);
+  --blue:      #1A6FBF;
+  --blue-light:#2481D7;
+  --blue-bg:   rgba(26,111,191,0.10);
+  --blue-brd:  rgba(26,111,191,0.28);
+  /* Page surfaces */
+  --bg:        #0A0A0A;
+  --surface:   #111111;
+  --surface2:  #161616;
+  --card:      #141414;
+  --border:    #242424;
+  --brd-red:   rgba(217,32,37,0.25);
+  --white:     #F4F2EE;
+  --body-text: #D4D0C8;
+  --muted:     #9A9690;
+  /* Keep gold as alias for yellow for legacy refs */
+  --gold:      #F5C800;
+  --gold-bg:   rgba(245,200,0,0.10);
+  --green:     #22C55E;
+  --wa:        #25D366;
+  --radius:    10px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--body-text);
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+/* TOPBAR MARQUEE */
+.topbar {
+  background: var(--red);
+  height: 36px;
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.topbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg, transparent, transparent 10px,
+    rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+/* fade edges */
+.topbar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    var(--red) 0%,
+    transparent 6%,
+    transparent 94%,
+    var(--red) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+  position: relative;
+  z-index: 0;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0 40px;
+}
+.marquee-sep {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+  display: inline-block;
+}
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--red) 35%, var(--yellow) 65%, var(--red) 85%, transparent);
+  opacity: 0.8;
+}
+.logo-wrap { display: flex; align-items: center; gap: 12px; }
+.logo-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transform: translateY(-4px);
+}
+.logo-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.logo-text-wrap strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.logo-text-wrap small {
+  font-size: 10.5px;
+  color: #b0aaaa;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.nav-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  background: var(--yellow-bg);
+  border: 1px solid var(--yellow-brd);
+  padding: 5px 13px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.nav-call {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.nav-call:hover { border-color: var(--red); background: rgba(217,32,37,0.06); }
+
+/* HERO */
+.hero {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px 5% 72px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 68px;
+  align-items: start;
+}
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-mesh svg {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.5s ease 0.1s forwards;
+}
+.hero-eyebrow .ln { width: 32px; height: 1.5px; background: linear-gradient(90deg, var(--red), var(--yellow)); border-radius: 2px; }
+
+h1 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 6.5vw, 82px);
+  line-height: 1.0;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.2s forwards;
+}
+h1 .blk { display: block; }
+h1 .red-word { color: var(--red); text-shadow: 0 0 40px rgba(245,200,0,0.15); }
+h1 .ghost {
+  display: block;
+  -webkit-text-stroke: 1.5px rgba(245,200,0,0.22);
+  color: transparent;
+}
+
+.hero-sub {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--body-text);
+  line-height: 1.8;
+  margin: 28px 0 0;
+  max-width: 500px;
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.3s forwards;
+}
+.hero-sub strong { color: var(--white); font-weight: 600; }
+
+/* OFFER STRIP */
+.offer-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(135deg, #1a1400 0%, #141000 100%);
+  border: 1px solid rgba(240,172,0,0.3);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 28px 0 30px;
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.4s forwards;
+  position: relative;
+  overflow: hidden;
+}
+.offer-strip::before { display: none; }
+/* shimmer sweep */
+.offer-strip::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 35%; height: 200%;
+  background: linear-gradient(105deg, transparent 0%, rgba(240,172,0,0.07) 50%, transparent 100%);
+  animation: shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0%   { left: -60%; }
+  100% { left: 130%; }
+}
+.offer-icon-box {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #F0AC00 0%, #C87D00 100%);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+  box-shadow: 0 4px 18px rgba(240,172,0,0.32);
+}
+.offer-body { position: relative; z-index: 1; }
+.offer-body strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #F5C800;
+  margin-bottom: 3px;
+  letter-spacing: 0.01em;
+}
+.offer-body p { font-size: 12px; color: rgba(245,200,0,0.65); }
+
+/* TRUST PILLS */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.48s forwards;
+}
+.trust-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--body-text);
+  transition: border-color 0.2s;
+}
+.trust-pill:hover { border-color: var(--brd-red); }
+.trust-check {
+  width: 16px; height: 16px;
+  background: rgba(34,197,94,0.14);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* STATS ROW */
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.55s forwards;
+}
+.stat-item {}
+.stat-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 38px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-num span { color: var(--yellow); }
+.stat-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* FORM CARD */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: sticky;
+  top: 82px;
+  scroll-margin-top: 100px;
+  opacity: 0;
+  animation: fadeUp 0.55s ease 0.22s forwards;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(217,32,37,0.08);
+}
+.form-header {
+  background: linear-gradient(135deg, var(--red) 0%, #9A0F13 100%);
+  padding: 22px 28px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.form-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 8px,
+    rgba(255,255,255,0.035) 8px, rgba(255,255,255,0.035) 16px
+  );
+}
+.form-header-inner { position: relative; }
+.form-header h2 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-bottom: 5px;
+}
+.form-header p { font-size: 13px; color: rgba(255,255,255,0.82); font-weight: 400; }
+
+/* Google Ads trust bar under form header */
+.form-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 9px 20px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.form-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--body-text);
+  font-weight: 500;
+}
+.form-trust-item svg { flex-shrink: 0; }
+
+.form-body { padding: 24px 28px 28px; }
+
+.fgroup { margin-bottom: 16px; position: relative; }
+.fgroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--body-text);
+  margin-bottom: 7px;
+  letter-spacing: 0.02em;
+}
+.fgroup input,
+.fgroup select {
+  width: 100%;
+  background: #0C0C0C;
+  border: 1.5px solid #252525;
+  border-radius: 9px;
+  padding: 14px 15px 14px 44px;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.fgroup select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+.fgroup select option { background: #111; color: var(--white); }
+.fgroup input:focus,
+.fgroup select:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px var(--red-glow);
+  background: #111;
+}
+.fgroup input.valid { border-color: rgba(34,197,94,0.5); }
+.fgroup input.valid ~ .field-check { opacity: 1; }
+.fgroup input::placeholder { color: #606060; }
+
+/* field icons */
+.field-icon {
+  position: absolute;
+  left: 14px;
+  bottom: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  color: #555;
+  pointer-events: none;
+  transition: color 0.18s;
+}
+.fgroup input:focus ~ .field-icon,
+.fgroup select:focus ~ .field-icon { color: var(--red); }
+.fgroup.no-label .field-icon { height: 100%; bottom: auto; top: 0; }
+
+/* green tick when field valid */
+.field-check {
+  position: absolute;
+  right: 13px;
+  bottom: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.seats-bar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(217,32,37,0.07);
+  border: 1px solid rgba(217,32,37,0.22);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  color: var(--body-text);
+  font-weight: 500;
+}
+.seats-bar strong { color: var(--red); font-weight: 700; }
+.seats-pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  position: relative;
+}
+.seats-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(217,32,37,0.5);
+  animation: pulseRing 1.6s ease-in-out infinite;
+}
+@keyframes pulseRing {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.7); opacity: 0; }
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  padding: 16px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  animation: btnPulse 2.8s ease-in-out infinite;
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(217,32,37,0.3); }
+  50%       { box-shadow: 0 4px 32px rgba(217,32,37,0.55); }
+}
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: left 0.45s;
+}
+.btn-submit:hover::after { left: 200%; }
+.btn-submit:hover { background: #B01419; animation: none; box-shadow: 0 8px 28px rgba(217,32,37,0.45); }
+.btn-submit:active { transform: scale(0.99); }
+
+/* reward sub-text under button */
+.btn-urgency {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 9px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-urgency strong { color: #F0AC00; font-weight: 600; }
+
+.divider-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  font-size: 11.5px;
+  color: #555;
+}
+.divider-or::before, .divider-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #1c1c1c;
+}
+
+.btn-wa {
+  width: 100%;
+  background: transparent;
+  color: var(--wa);
+  border: 1.5px solid rgba(37,211,102,0.25);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-wa:hover { background: rgba(37,211,102,0.06); border-color: rgba(37,211,102,0.4); }
+
+.form-microcopy {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+/* SUCCESS STATE */
+.success-state { display: none; text-align: center; padding: 8px 0; }
+.success-icon-wrap {
+  width: 64px; height: 64px;
+  margin: 0 auto 16px;
+  background: rgba(34,197,94,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(34,197,94,0.25);
+}
+.success-state h3 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.success-state p { font-size: 13.5px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+
+/* SECTION SCAFFOLD */
+.section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px 5%;
+}
+.section-eyebrow {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::after {
+  content: '';
+  width: 28px; height: 1.5px;
+  background: linear-gradient(90deg, var(--red), var(--yellow));
+  border-radius: 2px;
+}
+.section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--white);
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin-bottom: 44px;
+}
+
+/* COURSES */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+.course-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px 24px 22px;
+  transition: border-color 0.25s, transform 0.22s, box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--yellow));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.course-card:hover::before { transform: scaleX(1); }
+.course-card:hover {
+  border-color: var(--brd-red);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+.course-icon-box {
+  width: 48px; height: 48px;
+  background: var(--red-glow);
+  border: 1px solid rgba(217,32,37,0.18);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.course-degree {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+/* Blue degree label variant */
+.course-card:nth-child(2) .course-degree { color: var(--blue-light); }
+.course-card:nth-child(2) .course-icon-box { background: var(--blue-bg); border-color: var(--blue-brd); }
+.course-card:nth-child(2) .course-icon-box svg { stroke: #2481D7; }
+.course-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+.course-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 11px;
+}
+.course-desc {
+  font-size: 14px;
+  color: var(--body-text);
+  line-height: 1.78;
+  margin-bottom: 18px;
+}
+.course-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 11px;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* LAPTOP SECTION */
+.laptop-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.laptop-section .bg-orb {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,32,37,0.07), transparent 70%);
+  top: -200px; right: -80px;
+  pointer-events: none;
+}
+.laptop-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 88px 5%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.laptop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--yellow-bg);
+  border: 1px solid var(--yellow-brd);
+  color: var(--yellow);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.laptop-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(42px, 5.5vw, 68px);
+  line-height: 0.93;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+.laptop-title .gold { color: var(--yellow); }
+.laptop-desc {
+  font-size: 15.5px;
+  font-weight: 400;
+  color: var(--body-text);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 420px;
+}
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn-red:hover { background: var(--red-dark); box-shadow: 0 8px 26px rgba(217,32,37,0.35); }
+
+.stats-grid { display: grid; gap: 14px; }
+.stat-card {
+  background: #0C0C0C;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  transition: border-color 0.2s;
+}
+.stat-card:hover { border-color: rgba(26,111,191,0.3); }
+.stat-big-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--red);
+  line-height: 1;
+  min-width: 68px;
+  letter-spacing: -0.02em;
+}
+.stat-big-num sup { font-size: 18px; vertical-align: super; }
+.stat-card-lbl { font-size: 13.5px; font-weight: 600; color: var(--white); }
+.stat-card-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* LEGACY BANNER */
+.legacy-banner {
+  background: linear-gradient(135deg, var(--red) 0%, #B01419 60%, #8B0F13 100%);
+  padding: 44px 5%;
+  position: relative;
+  overflow: hidden;
+}
+.legacy-banner::before {
+  content: '30+';
+  position: absolute;
+  right: 3%; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 200px;
+  color: rgba(0,0,0,0.07);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+.legacy-banner::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -60deg, transparent, transparent 12px,
+    rgba(0,0,0,0.025) 12px, rgba(0,0,0,0.025) 24px
+  );
+  pointer-events: none;
+}
+.legacy-banner-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.legacy-banner h2 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.8vw, 44px);
+  color: #fff;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.legacy-banner h2 span {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 6px;
+  font-family: 'Inter', sans-serif;
+}
+.legacy-stats { display: flex; gap: 44px; flex-wrap: wrap; }
+.legacy-stat { text-align: center; position: relative; }
+.legacy-stat:not(:last-child)::after { content: ""; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); height: 40px; width: 1px; background: rgba(255,255,255,0.15); }
+.legacy-stat-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--yellow);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.legacy-stat-lbl {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* WHY ARENA */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+/* Yellow accent for star / certified card */
+.why-card:first-child .why-icon-box { background: var(--yellow-bg); border-color: var(--yellow-brd); }
+.why-card:first-child .why-icon-box svg { stroke: var(--yellow); }
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: border-color 0.2s, background 0.2s;
+}
+.why-card:hover { border-color: var(--brd-red); background: var(--surface2); }
+.why-icon-box {
+  width: 44px; height: 44px;
+  background: var(--red-glow);
+  border: 1px solid rgba(217,32,37,0.14);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.why-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 5px;
+  letter-spacing: 0.01em;
+}
+.why-text { font-size: 14px; color: var(--body-text); line-height: 1.72; }
+
+/* FOOTER CTA */
+.footer-cta {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 72px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse at 40% 50%, rgba(217,32,37,0.07), transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(245,200,0,0.04), transparent 60%);
+  pointer-events: none;
+}
+.footer-cta h2 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 4.5vw, 52px);
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  position: relative;
+}
+.footer-cta p { font-size: 16px; color: var(--body-text); margin-bottom: 32px; font-weight: 400; position: relative; }
+.footer-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-outline-wa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--wa);
+  border: 1.5px solid rgba(37,211,102,0.25);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 14px 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-outline-wa:hover { background: rgba(37,211,102,0.06); border-color: rgba(37,211,102,0.4); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer p { font-size: 12px; color: #555; }
+footer a { color: #666; text-decoration: none; font-size: 12px; transition: color 0.2s; }
+footer a:hover { color: var(--yellow); }
+.footer-links { display: flex; gap: 20px; }
+
+/* FLOATING WA */
+.float-wa {
+  position: fixed;
+  bottom: 26px; right: 26px;
+  z-index: 200;
+  width: 56px; height: 56px;
+  background: var(--wa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.32);
+  text-decoration: none;
+  animation: floatBob 3s ease-in-out infinite;
+}
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; padding: 48px 5% 44px; gap: 48px; }
+  .form-card { position: static; }
+  .courses-grid { grid-template-columns: repeat(2,1fr); }
+  .laptop-inner { grid-template-columns: 1fr; gap: 48px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .legacy-banner-inner { flex-direction: column; gap: 28px; }
+  .nav-badge { display: none; }
+}
+
+@media (max-width: 600px) {
+  /* ── TOPBAR ── */
+  .topbar { height: 32px; }
+  .marquee-item { font-size: 11px; padding: 0 28px; gap: 8px; }
+
+  /* ── NAV ── */
+  nav { padding: 0 4%; height: 54px; }
+  .logo-img { height: 30px; }
+  .logo-text-wrap small { display: none; }
+  .logo-text-wrap strong { font-size: 13px; }
+
+  /* ── HERO: content FIRST on mobile ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 4% 36px;
+    gap: 32px;
+  }
+  .hero > div:last-child {
+    padding: 0;
+  }
+  .form-card {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .form-header { padding: 18px 20px 14px; }
+  .form-header h2 { font-size: 17px; }
+  .form-body { padding: 16px 20px 20px; }
+  .fgroup { margin-bottom: 12px; }
+  .fgroup input, .fgroup select { padding: 13px 13px 13px 44px; font-size: 15px; }
+  .field-icon { height: 44px; }
+  .field-check { height: 44px; }
+  .btn-submit { padding: 14px; font-size: 15px; }
+  .form-trust-bar { flex-wrap: wrap; gap: 8px; padding: 8px 16px; }
+  .form-trust-item { font-size: 10.5px; }
+  .seats-bar { font-size: 12px; }
+
+  /* ── HEADINGS & TYPE ── */
+  h1 { font-size: clamp(36px, 10.5vw, 52px); line-height: 1.0; }
+  .hero-sub { font-size: 14.5px; line-height: 1.7; margin-top: 16px; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 14px; }
+
+  /* ── OFFER & TRUST ── */
+  .offer-strip { padding: 12px 14px; gap: 10px; }
+  .offer-body strong { font-size: 13.5px; }
+  .offer-body p { font-size: 11px; }
+  .trust-row { gap: 6px; margin-top: 16px; }
+  .trust-pill { font-size: 11px; padding: 5px 10px; gap: 5px; }
+
+  /* ── STATS ROW ── */
+  .stat-row { gap: 14px; flex-wrap: wrap; margin-top: 24px; padding-top: 20px; }
+  .stat-num { font-size: 28px; }
+  .stat-lbl { font-size: 9.5px; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 44px 4%; }
+  .section-title { font-size: clamp(24px, 7vw, 34px); margin-bottom: 24px; }
+  .section-eyebrow { font-size: 10px; }
+
+  /* ── COURSES ── */
+  .courses-grid { grid-template-columns: 1fr; gap: 12px; }
+  .course-card { padding: 20px 18px; }
+  .course-name { font-size: 19px; }
+  .course-desc { font-size: 13px; }
+
+  /* ── LEGACY BANNER ── */
+  .legacy-banner { padding: 32px 4%; }
+  .legacy-banner h2 { font-size: clamp(20px, 6vw, 28px); }
+  .legacy-stats { gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .legacy-stat-num { font-size: 26px; }
+  .legacy-banner::before { font-size: 120px; opacity: 0.04; }
+
+  /* ── LAPTOP SECTION ── */
+  .laptop-section .laptop-inner { padding: 44px 4%; gap: 32px; }
+  .laptop-title { font-size: clamp(32px, 9vw, 48px); }
+  .laptop-desc { font-size: 14px; }
+  .stats-grid { gap: 10px; }
+  .stat-card { padding: 14px 16px; gap: 14px; }
+  .stat-big-num { font-size: 32px; min-width: 52px; }
+  .stat-card-lbl { font-size: 13px; }
+  .stat-card-sub { font-size: 11px; }
+
+  /* ── WHY ARENA ── */
+  .why-card { padding: 18px 16px; gap: 12px; }
+  .why-icon-box { width: 38px; height: 38px; border-radius: 8px; flex-shrink: 0; }
+  .why-title { font-size: 14px; }
+  .why-text { font-size: 13px; }
+
+  /* ── FOOTER CTA ── */
+  .footer-cta { padding: 44px 4%; }
+  .footer-cta h2 { font-size: clamp(24px, 7vw, 36px); }
+  .footer-cta p { font-size: 14px; }
+  .footer-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+  .btn-red, .btn-outline-wa { justify-content: center; padding: 14px 20px; font-size: 14.5px; }
+
+  /* ── FOOTER ── */
+  footer { flex-direction: column; text-align: center; gap: 10px; padding: 18px 4%; }
+
+  /* ── FLOATING WA ── */
+  .float-wa { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+}
+
+/* ── STICKY MOBILE CTA BAR (below the fold) ── */
+.mobile-cta-bar {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobile-cta-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 150;
+    background: #0A0A0A;
+    border-top: 1px solid #1e1e1e;
+    padding: 10px 16px 14px;
+    gap: 10px;
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.7);
+  }
+  .mobile-cta-bar .mcta-call {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .mobile-cta-bar .mcta-enquire {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  /* push float-wa above the bar */
+  .float-wa { bottom: 82px; }
+  /* add padding to page bottom so content isn't hidden behind bar */
+  body { padding-bottom: 74px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR MARQUEE -->
+<div class="topbar" aria-label="Announcements">
+  <div class="marquee-track">
+    <!-- set 1 -->
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Free Laptop for Every New Joiner
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Batch 2026 Admissions Open
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      BSc Animation &amp; VFX · BSc Game Development · BA Graphic Design
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Free Counselling · No Obligation · Reply Within 2 Hours
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      100% Placement Support · 30+ Years of Excellence
+      <span class="marquee-sep"></span>
+    </span>
+    <!-- set 2 — exact duplicate for seamless infinite loop -->
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Free Laptop for Every New Joiner
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Batch 2026 Admissions Open
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      BSc Animation &amp; VFX · BSc Game Development · BA Graphic Design
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Free Counselling · No Obligation · Reply Within 2 Hours
+      <span class="marquee-sep"></span>
+    </span>
+    <span class="marquee-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      100% Placement Support · 30+ Years of Excellence
+      <span class="marquee-sep"></span>
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-img-wrap">
+    <img class="logo-img" id="arena-logo" src="data:image/png;base64,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" alt="Arena Animation Thrissur">
+    </div>
+    <div class="logo-text-wrap">
+      <strong>Arena Animation</strong>
+      <small>Thrissur &middot; Est. 1996</small>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-badge">Admissions Open</div>
+    <a href="tel:+919072621111" class="nav-call">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+      Call Now
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-mesh" aria-hidden="true">
+    <svg viewBox="0 0 1240 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="g1" cx="70%" cy="25%">
+          <stop offset="0%" stop-color="#D92025" stop-opacity="0.09"/>
+          <stop offset="100%" stop-color="#D92025" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="g2" cx="15%" cy="80%">
+          <stop offset="0%" stop-color="#F5C800" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#F5C800" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1240" height="720" fill="url(#g1)"/>
+      <rect width="1240" height="720" fill="url(#g2)"/>
+      <g stroke="#D92025" stroke-opacity="0.035" stroke-width="1">
+        <line x1="0" y1="120" x2="1240" y2="120"/>
+        <line x1="0" y1="240" x2="1240" y2="240"/>
+        <line x1="0" y1="360" x2="1240" y2="360"/>
+        <line x1="0" y1="480" x2="1240" y2="480"/>
+        <line x1="0" y1="600" x2="1240" y2="600"/>
+        <line x1="200" y1="0" x2="200" y2="720"/>
+        <line x1="420" y1="0" x2="420" y2="720"/>
+        <line x1="640" y1="0" x2="640" y2="720"/>
+        <line x1="860" y1="0" x2="860" y2="720"/>
+        <line x1="1060" y1="0" x2="1060" y2="720"/>
+      </g>
+      <polygon points="920,60 1080,160 1010,300 840,280 790,145" stroke="#D92025" stroke-opacity="0.055" stroke-width="1" fill="none"/>
+      <line x1="700" y1="0" x2="1240" y2="540" stroke="#D92025" stroke-opacity="0.04" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- LEFT CONTENT -->
+  <div style="position:relative">
+    <div class="hero-eyebrow">
+      <span class="ln"></span>
+      <span style="color:var(--blue-light)">Arena Animation</span>&nbsp;· Thrissur's Premier Creative Institute
+    </div>
+
+    <h1>
+      <span class="blk">LAUNCH YOUR</span>
+      <span class="blk red-word">CREATIVE</span>
+      <span class="ghost">CAREER</span>
+    </h1>
+
+    <p class="hero-sub">
+      <strong>30+ years of Arena excellence</strong>, now in Thrissur. Degree-level programmes in Animation, Game Development and Graphic Design, with real industry mentors, live projects, and guaranteed placement support.
+    </p>
+
+    <div class="offer-strip">
+      <div class="offer-icon-box">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 12 20 22 4 22 4 12"/>
+          <rect x="2" y="7" width="20" height="5"/>
+          <line x1="12" y1="22" x2="12" y2="7"/>
+          <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+          <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+        </svg>
+      </div>
+      <div class="offer-body">
+        <strong>FREE Laptop Included With Admission</strong>
+        <p>Every student gets one. No extra cost, no conditions.</p>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-pill">
+        <div class="trust-check">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        30+ Years of National Legacy
+      </div>
+      <div class="trust-pill">
+        <div class="trust-check">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Degree-Level Programmes
+      </div>
+      <div class="trust-pill">
+        <div class="trust-check">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        100% Placement Support
+      </div>
+      <div class="trust-pill">
+        <div class="trust-check">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Arena Multimedia Certified
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-lbl">Years of Excellence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">Degree Programmes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1000<span>+</span></div>
+        <div class="stat-lbl">Kerala Alumni</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-lbl">Placement Support</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="formCard">
+    <div class="form-header">
+      <div class="form-header-inner">
+        <h2>GET COURSE DETAILS & FEE STRUCTURE</h2>
+        <p>Talk to a student advisor within 2 hours. No pressure.</p>
+      </div>
+    </div>
+
+    <!-- Google Ads trust indicators -->
+    <div class="form-trust-bar">
+      <div class="form-trust-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Free counselling
+      </div>
+      <div class="form-trust-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        No obligation
+      </div>
+      <div class="form-trust-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Reply within 2 hrs
+      </div>
+    </div>
+
+    <div class="form-body">
+      <div id="formInner">
+        <div class="seats-bar">
+          <span class="seats-pulse"></span>
+          <span>Only <strong><span id="seatsLeft">14</span> seats left</strong> in this batch. Filling fast.</span>
+        </div>
+
+        <div class="fgroup">
+          <label>Your Full Name</label>
+          <input type="text" id="fname" placeholder="Enter your name" autocomplete="name">
+          <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <svg class="field-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="fgroup">
+          <label>Mobile Number</label>
+          <input type="tel" id="fphone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel">
+          <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          <svg class="field-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="fgroup">
+          <label>Email Address <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input type="email" id="femail" placeholder="your@email.com" autocomplete="email">
+          <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="fgroup">
+          <label>Course You Are Interested In</label>
+          <select id="fcourse" style="padding-left:44px">
+            <option value="" disabled selected>Choose a course</option>
+            <option value="bsc-animation">BSc Animation &amp; VFX</option>
+            <option value="bsc-game">BSc Game Development</option>
+            <option value="ba-graphic">BA Graphic Design</option>
+            <option value="unsure">Not decided yet</option>
+          </select>
+          <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+
+        <button class="btn-submit" onclick="handleSubmit()">
+          Send Me Course Details
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <p class="btn-urgency">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F0AC00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          <strong>Free laptop included</strong> with every admission
+        </p>
+
+        <div class="divider-or">or connect instantly</div>
+
+        <a href="https://wa.me/919072621111?text=Hi%2C%20I%27m%20interested%20in%20Arena%20Animation%20Thrissur.%20Please%20share%20course%20details%20and%20the%20free%20laptop%20offer." target="_blank" class="btn-wa">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+
+        <p class="form-microcopy">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          No spam. Your details stay private.
+        </p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-state" id="successState">
+        <div class="success-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>YOU ARE ALL SET!</h3>
+        <p>Our counsellor will call you within 2 hours. Get instant answers on WhatsApp in the meantime.</p>
+        <a href="https://wa.me/919072621111?text=Hi%2C%20I%20just%20submitted%20an%20enquiry.%20Please%20share%20more%20details%20about%20Arena%20Animation%20Thrissur." target="_blank" class="btn-wa" style="margin-top:4px">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Continue on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 30 YEARS LEGACY BANNER -->
+<div class="legacy-banner">
+  <div class="legacy-banner-inner">
+    <h2>
+      <span>Arena Animation</span>
+      30+ YEARS OF SHAPING<br>CREATIVE CAREERS <span style="color:var(--yellow)">WORLDWIDE</span>
+    </h2>
+    <div class="legacy-stats">
+      <div class="legacy-stat">
+        <div class="legacy-stat-num">1996</div>
+        <div class="legacy-stat-lbl">Year Founded</div>
+      </div>
+      <div class="legacy-stat">
+        <div class="legacy-stat-num">200+</div>
+        <div class="legacy-stat-lbl">Centres Worldwide</div>
+      </div>
+      <div class="legacy-stat">
+        <div class="legacy-stat-num">3L+</div>
+        <div class="legacy-stat-lbl">Alumni Placed</div>
+      </div>
+      <div class="legacy-stat">
+        <div class="legacy-stat-num">Aptech</div>
+        <div class="legacy-stat-lbl">Backed by</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<div class="section">
+  <div class="section-eyebrow">Our Programmes</div>
+  <div class="section-title">DEGREE-LEVEL COURSES</div>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-icon-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7"/>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+      </div>
+      <div class="course-degree">BSc Programme | 3 Years</div>
+      <div class="course-name">Animation &amp; VFX</div>
+      <p class="course-desc">Master 3D modeling, character animation, VFX compositing, and motion graphics. Train on industry-standard tools used by studios across India and globally.</p>
+      <div class="course-tags">
+        <span class="tag">3D Animation</span>
+        <span class="tag">Visual Effects</span>
+        <span class="tag">Maya / Blender</span>
+        <span class="tag">After Effects</span>
+        <span class="tag">Compositing</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="16" cy="11" r="1" fill="#D92025"/>
+          <circle cx="18" cy="13" r="1" fill="#D92025"/>
+        </svg>
+      </div>
+      <div class="course-degree">BSc Programme | 3 Years</div>
+      <div class="course-name">Game Development</div>
+      <p class="course-desc">Build real games using Unity and Unreal Engine. Learn game mechanics, AR/VR, level design, and coding. Graduate with a live portfolio that studios actually want.</p>
+      <div class="course-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">Unreal Engine</span>
+        <span class="tag">C# / C++</span>
+        <span class="tag">AR / VR</span>
+        <span class="tag">Level Design</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="4"/>
+          <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/>
+          <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
+          <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/>
+          <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
+        </svg>
+      </div>
+      <div class="course-degree">BA Programme | 3 Years</div>
+      <div class="course-name">Graphic Design</div>
+      <p class="course-desc">Brand identity, packaging, digital design, and UX fundamentals. Build a professional portfolio that gets you hired in agencies, studios, and brands.</p>
+      <div class="course-tags">
+        <span class="tag">Brand Identity</span>
+        <span class="tag">Photoshop</span>
+        <span class="tag">Illustrator</span>
+        <span class="tag">UI/UX Basics</span>
+        <span class="tag">Packaging</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FREE LAPTOP -->
+<div class="laptop-section">
+  <div class="bg-orb"></div>
+  <div class="laptop-inner">
+    <div>
+      <div class="laptop-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        Batch 2026 Exclusive Offer
+      </div>
+      <div class="laptop-title">
+        JOIN &amp; GET A<br>
+        <span class="gold">FREE LAPTOP</span><br>
+        ON ADMISSION
+      </div>
+      <p class="laptop-desc">Every student enrolling in the current batch receives a laptop, so you start creating from day one. Your tools are ready before classes begin.</p>
+      <button class="btn-red" onclick="document.getElementById('fphone').scrollIntoView({behavior:'smooth'}); setTimeout(()=>document.getElementById('fphone').focus(),400)">
+        Claim Your Seat
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-big-num">30<sup>+</sup></div>
+        <div>
+          <div class="stat-card-lbl">Years of Arena Legacy</div>
+          <div class="stat-card-sub">India's most trusted creative education brand, est. 1996</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big-num">3</div>
+        <div>
+          <div class="stat-card-lbl">Degree-Level Programmes</div>
+          <div class="stat-card-sub">BSc Animation, BSc Game Dev, BA Graphic Design</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big-num">100<sup>%</sup></div>
+        <div>
+          <div class="stat-card-lbl">Placement Assistance</div>
+          <div class="stat-card-sub">Dedicated cell with pan-World industry connections</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY ARENA -->
+<div class="section">
+  <div class="section-eyebrow">Why Choose Us</div>
+  <div class="section-title">THE ARENA ADVANTAGE</div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Arena Multimedia Certified</div>
+        <p class="why-text">Part of India's top creative education network. Your degree carries national recognition, trusted by studios, agencies, and employers across the country.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Industry-Grade Labs</div>
+        <p class="why-text">High-performance computers with licensed professional software, the same tools working studios use, from day one of your course.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Mentors From the Industry</div>
+        <p class="why-text">Learn from professionals actively working in animation, gaming, and design. Real experience, not just theory.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D92025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <div class="why-title">Portfolio-First Curriculum</div>
+        <p class="why-text">Graduate with a real, employer-ready portfolio of live projects, not just a certificate. Hiring managers notice the difference.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-box" style="background:var(--blue-bg);border-color:var(--blue-brd)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2481D7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div>
+        <div class="why-title" style="color:var(--blue-light)">Pan-World Placement Network</div>
+        <p class="why-text">Access Arena's 200+ centre network and partnerships with studios, broadcasters, and media companies across India, the Gulf, and international markets worldwide.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-box" style="background:var(--blue-bg);border-color:var(--blue-brd)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2481D7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="why-title" style="color:var(--blue-light)">Right Here in Thrissur</div>
+        <p class="why-text">National brand quality with local accessibility. No need to move cities. Build a world-class creative career right from Thrissur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h2>READY TO TAKE THE FIRST STEP?</h2>
+  <p>Limited seats available for the <strong style="color:var(--yellow)">2026 batch</strong>. The free laptop offer closes soon.</p>
+  <div class="footer-btns">
+    <button class="btn-red" onclick="document.getElementById('fphone').scrollIntoView({behavior:'smooth'}); setTimeout(()=>document.getElementById('fphone').focus(),400)" style="font-size:14px; padding:14px 28px;">
+      Get Course Details Now
+    </button>
+    <a href="https://wa.me/919072621111?text=Hi%2C%20I%27m%20interested%20in%20Arena%20Animation%20Thrissur.%20Please%20share%20details%20about%20the%20courses%20and%20free%20laptop%20offer." target="_blank" class="btn-outline-wa">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Arena Animation Thrissur &middot; <span style="color:var(--yellow)">Authorized Study Centre</span> | Powered by Aptech Limited</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="tel:+919072621111">Call Us</a>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA BAR -->
+<div class="mobile-cta-bar">
+  <a href="tel:+919072621111" class="mcta-call">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+    Call
+  </a>
+  <button class="mcta-enquire" onclick="document.getElementById('formCard').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.getElementById('fname').focus(),400)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    Get Course Details
+  </button>
+</div>
+
+<!-- FLOATING WA BUTTON -->
+<a href="https://wa.me/919072621111?text=Hi%2C%20I%27m%20interested%20in%20Arena%20Animation%20Thrissur" target="_blank" class="float-wa" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* SEATS */
+(function() {
+  const n = 10 + Math.floor(Math.random() * 11);
+  document.getElementById('seatsLeft').textContent = n;
+})();
+
+/* REAL-TIME VALIDATION — green tick when field looks good */
+function markValid(el) {
+  el.classList.add('valid');
+  el.style.borderColor = 'rgba(34,197,94,0.5)';
+}
+function markInvalid(el) {
+  el.classList.remove('valid');
+  el.style.borderColor = 'var(--red)';
+  el.style.animation = 'shake 0.35s ease';
+  setTimeout(() => el.style.animation = '', 350);
+}
+function clearState(el) {
+  el.classList.remove('valid');
+  el.style.borderColor = '';
+}
+
+/* shake keyframe injected once */
+(function(){
+  const s = document.createElement('style');
+  s.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}';
+  document.head.appendChild(s);
+})();
+
+const fname   = document.getElementById('fname');
+const fphone  = document.getElementById('fphone');
+const femail  = document.getElementById('femail');
+const fcourse = document.getElementById('fcourse');
+
+fname.addEventListener('input', function() {
+  this.value.trim().length >= 2 ? markValid(this) : clearState(this);
+});
+fphone.addEventListener('input', function() {
+  this.value.replace(/\D/g,'').length >= 10 ? markValid(this) : clearState(this);
+});
+femail.addEventListener('input', function() {
+  clearState(this); /* optional — no validation */
+});
+fcourse.addEventListener('change', function() {
+  this.value ? markValid(this) : clearState(this);
+});
+
+/* Auto-advance to next field on mobile (Enter key) */
+fname.addEventListener('keydown',  function(e){ if(e.key==='Enter'){ e.preventDefault(); fphone.focus(); }});
+fphone.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); femail.focus(); }});
+femail.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); fcourse.focus(); }});
+
+/* FORM SUBMIT */
+function handleSubmit() {
+  const name   = fname.value.trim();
+  const phone  = fphone.value.replace(/\D/g,'');
+  const course = fcourse.value;
+  let ok = true;
+
+  if (!name)        { markInvalid(fname);   fname.focus();   ok = false; }
+  if (phone.length < 10) { markInvalid(fphone); if(ok) fphone.focus(); ok = false; }
+  if (!course)      { markInvalid(fcourse); if(ok) fcourse.focus(); ok = false; }
+  if (!ok) return;
+
+  /* Fire GTM / GA4 event here */
+  /* gtag('event', 'generate_lead', { course: course, method: 'form' }); */
+
+fetch("https://script.google.com/macros/s/AKfycbwnVnEZXkrlLSeyRxtimUm3KelZ_diBAXUY67Ts61Ef6KpTij_GMcS63ihKxmyrmgWa/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    name: fname.value.trim(),
+    phone: fphone.value.trim(),
+    email: femail.value.trim(),
+    course: fcourse.value
+  })
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Success:", data);
+})
+.catch(err => {
+  console.error("Error:", err);
+});
+  /* fetch('/api/lead', { method:'POST', body: JSON.stringify({name, phone: fphone.value.trim(), email: femail.value.trim(), course}) }); */
+
+  document.getElementById('formInner').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+}
+
+</script>
+</body>
+</html>
+
